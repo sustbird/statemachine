@@ -8,19 +8,35 @@ import java.util.List;
  */
 public class StateTransitionException extends RuntimeException {
 
+    /**
+     * holder list of constraint violation exception
+     */
     private final List<ConstraintViolationException> constraintViolationExceptions;
 
+    /**
+     * Constructor
+     * @param constraintViolationExceptions list of exceptions
+     */
     public StateTransitionException(
             final List<ConstraintViolationException> constraintViolationExceptions) {
         this.constraintViolationExceptions = constraintViolationExceptions;
     }
 
+    /**
+     * Constructor
+     * @param message error message
+     * @param constraintViolationExceptions list of exceptions
+     */
     public StateTransitionException(final String message,
                                     final List<ConstraintViolationException> constraintViolationExceptions) {
         super(message);
         this.constraintViolationExceptions = constraintViolationExceptions;
     }
 
+    /**
+     * Getter of violation exceptions.
+     * @return list of exceptions
+     */
     public List<ConstraintViolationException> getConstraintViolationExceptions() {
         return constraintViolationExceptions;
     }

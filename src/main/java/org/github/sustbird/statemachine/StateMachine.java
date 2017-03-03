@@ -95,6 +95,7 @@ public class StateMachine<T> {
                 } catch (ActionFailedException e) {
                     log.debug("State transition Action: {} failed from: {} to {}. Error: {}", stateAction, fromState,
                               toState, e.getMessage());
+                    //if the action is blocking, throw exception, else continue executing next action
                     if (stateAction.isBlocking()) {
                         throw e;
                     }
