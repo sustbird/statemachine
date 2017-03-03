@@ -1,9 +1,9 @@
-package org.github.sm.example;
+package org.github.sustbird.statemachine.example;
 
-import org.github.sm.ConstraintActionPair;
-import org.github.sm.State;
-import org.github.sm.StateAction;
-import org.github.sm.StateConstraint;
+import org.github.sustbird.statemachine.ConstraintActionPair;
+import org.github.sustbird.statemachine.State;
+import org.github.sustbird.statemachine.StateAction;
+import org.github.sustbird.statemachine.StateConstraint;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public enum BlogState implements State<Blog> {
             return null;
         }
     },
-    DELETED {
+    PUBLISHED {
         @Override
         public Map<State, ConstraintActionPair<Blog>> getTransitions() {
             Set<StateAction<Blog>> stateActions = new HashSet<>();

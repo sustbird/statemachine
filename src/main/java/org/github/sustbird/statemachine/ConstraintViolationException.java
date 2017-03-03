@@ -1,4 +1,4 @@
-package org.github.sm;
+package org.github.sustbird.statemachine;
 
 /**
  * Represents the constraint violations.
@@ -6,18 +6,38 @@ package org.github.sm;
  */
 public class ConstraintViolationException {
 
+    /**
+     * Error code.
+     */
     private final String code;
+
+    /**
+     * Error message
+     */
     private final String message;
 
+    /**
+     * Constructor
+     * @param code error code
+     * @param message error message
+     */
     public ConstraintViolationException(final String code, final String message) {
         this.code = code;
         this.message = message;
     }
 
+    /**
+     * Getter for code.
+     * @return
+     */
     public String getCode() {
         return code;
     }
 
+    /**
+     * Getter for message
+     * @return
+     */
     public String getMessage() {
         return message;
     }

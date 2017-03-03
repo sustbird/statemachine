@@ -1,4 +1,4 @@
-package org.github.sm;
+package org.github.sustbird.statemachine;
 
 import java.util.List;
 
