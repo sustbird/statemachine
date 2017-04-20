@@ -1,6 +1,6 @@
 package org.github.sustbird.statemachine.example;
 
-import org.github.sustbird.statemachine.State;
+import org.github.sustbird.statemachine.contract.State;
 
 /**
  * @author shafiul.gp@gmail.com

@@ -1,8 +1,8 @@
 package org.github.sustbird.statemachine.example;
 
-import org.github.sustbird.statemachine.ConstraintViolationException;
-import org.github.sustbird.statemachine.State;
-import org.github.sustbird.statemachine.StateConstraint;
+import org.github.sustbird.statemachine.exception.ConstraintViolationException;
+import org.github.sustbird.statemachine.contract.State;
+import org.github.sustbird.statemachine.contract.StateConstraint;
 
 /**
  * @author shafiul.gp@gmail.com

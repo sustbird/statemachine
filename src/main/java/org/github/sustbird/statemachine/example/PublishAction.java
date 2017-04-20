@@ -1,8 +1,8 @@
 package org.github.sustbird.statemachine.example;
 
-import org.github.sustbird.statemachine.ActionFailedException;
-import org.github.sustbird.statemachine.State;
-import org.github.sustbird.statemachine.StateAction;
+import org.github.sustbird.statemachine.exception.ActionFailedException;
+import org.github.sustbird.statemachine.contract.State;
+import org.github.sustbird.statemachine.contract.StateAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,4 +1,7 @@
-package org.github.sustbird.statemachine;
+package org.github.sustbird.statemachine.model;
+
+import org.github.sustbird.statemachine.contract.StateAction;
+import org.github.sustbird.statemachine.contract.StateConstraint;
 
 import java.util.List;
 import java.util.Set;

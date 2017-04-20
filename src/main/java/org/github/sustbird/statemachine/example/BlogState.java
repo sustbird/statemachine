@@ -1,9 +1,9 @@
 package org.github.sustbird.statemachine.example;
 
-import org.github.sustbird.statemachine.ConstraintActionPair;
-import org.github.sustbird.statemachine.State;
-import org.github.sustbird.statemachine.StateAction;
-import org.github.sustbird.statemachine.StateConstraint;
+import org.github.sustbird.statemachine.model.ConstraintActionPair;
+import org.github.sustbird.statemachine.contract.State;
+import org.github.sustbird.statemachine.contract.StateAction;
+import org.github.sustbird.statemachine.contract.StateConstraint;
 
 import java.util.ArrayList;
 import java.util.HashMap;

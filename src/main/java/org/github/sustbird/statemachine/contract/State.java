@@ -1,4 +1,6 @@
-package org.github.sustbird.statemachine;
+package org.github.sustbird.statemachine.contract;
+
+import org.github.sustbird.statemachine.model.ConstraintActionPair;
 
 import java.util.Map;
 

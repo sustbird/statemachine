@@ -1,5 +1,12 @@
 package org.github.sustbird.statemachine;
 
+import org.github.sustbird.statemachine.contract.State;
+import org.github.sustbird.statemachine.contract.StateAction;
+import org.github.sustbird.statemachine.contract.StateConstraint;
+import org.github.sustbird.statemachine.exception.ActionFailedException;
+import org.github.sustbird.statemachine.exception.ConstraintViolationException;
+import org.github.sustbird.statemachine.exception.StateTransitionException;
+import org.github.sustbird.statemachine.model.ConstraintActionPair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -7,8 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+
+import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.toList;
 
 /**
  * The state machine core engine.
@@ -55,6 +63,7 @@ public class StateMachine<T> {
         List<StateConstraint<T>> constraints = constraintActionPair.getConstraints();
         if (constraints != null) {
             for (StateConstraint<T> constraint : constraints) {
+                log.debug("Validating constraint: {}", constraint.getClass().getSimpleName());
                 if (!constraint.validate(oldValue, newValue, fromState, toState)) {
                     constraintViolationExceptions
                             .add(constraint.getViolationException(oldValue, newValue, fromState, toState));
@@ -75,14 +84,7 @@ public class StateMachine<T> {
         Set<StateAction<T>> actions = constraintActionPair.getActions();
 
         //sort the actions according to order(low means higher priority)
-        SortedSet<StateAction<T>> sortedActions = new TreeSet<>((o1, o2) -> {
-            if (o1.getOrder() > o2.getOrder()) {
-                return 1;
-            }
-            return -1;
-        });
-
-        sortedActions.addAll(actions);
+        List<StateAction<T>> sortedActions = actions.stream().sorted(comparing(StateAction::getOrder)).collect(toList());
 
         //execute each defined actions
         if (actions != null) {

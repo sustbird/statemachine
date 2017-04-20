@@ -1,4 +1,4 @@
-package org.github.sustbird.statemachine;
+package org.github.sustbird.statemachine.exception;
 
 /**
  * Represents the constraint violations.

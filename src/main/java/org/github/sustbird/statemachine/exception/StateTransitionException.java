@@ -1,4 +1,6 @@
-package org.github.sustbird.statemachine;
+package org.github.sustbird.statemachine.exception;
+
+import org.github.sustbird.statemachine.exception.ConstraintViolationException;
 
 import java.util.List;
 

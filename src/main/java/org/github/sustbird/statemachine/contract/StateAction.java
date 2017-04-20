@@ -1,4 +1,6 @@
-package org.github.sustbird.statemachine;
+package org.github.sustbird.statemachine.contract;
+
+import org.github.sustbird.statemachine.exception.ActionFailedException;
 
 /**
  * Contract for actions after all constraints are satisfied for a transition.
