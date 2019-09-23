@@ -1,4 +1,4 @@
-# Simplest possible Java State Machine
+# Simple Java State Machine
 
 This simple state machine consists of few dead simple contracts for defining constraints and actions along with single engine file of ~80 lines.
  
