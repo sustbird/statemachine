@@ -3,7 +3,7 @@ package org.github.sustbird.statemachine.example;
 import org.github.sustbird.statemachine.StateMachine;
 
 /**
- * @author shafiul@cefalo.com
+ * @author shafiul.gp@gmail.com
  */
 public class TestStateMachine {
 

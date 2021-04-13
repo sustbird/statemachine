@@ -21,6 +21,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * The state machine core engine.
  * For a state transition, it validates all constraints and if satisfied executes defines actions.
+ *
  * @author shafiul.gp@gmail.com
  */
 public class StateMachine<T> {
@@ -29,10 +30,11 @@ public class StateMachine<T> {
 
     /**
      * Do the transition from one state to another
-     * @param oldValue old domain object
-     * @param newValue new domain object
+     *
+     * @param oldValue  old domain object
+     * @param newValue  new domain object
      * @param fromState old state
-     * @param toState new state
+     * @param toState   new state
      * @return updated value, which was returned by last action
      */
     public T doTransition(T oldValue, T newValue, State<T> fromState, State<T> toState) {
@@ -84,23 +86,22 @@ public class StateMachine<T> {
         Set<StateAction<T>> actions = constraintActionPair.getActions();
 
         //sort the actions according to order(low means higher priority)
-        List<StateAction<T>> sortedActions = actions.stream().sorted(comparing(StateAction::getOrder)).collect(toList());
+        List<StateAction<T>> sortedActions = actions.stream()
+                .sorted(comparing(StateAction::getOrder))
+                .collect(toList());
 
         //execute each defined actions
-        if (actions != null) {
-            for (StateAction<T> stateAction : sortedActions) {
-                try {
-                    log.debug("Action executing: {}", stateAction.getClass().getSimpleName());
-                    response = stateAction.execute(oldValue, newValue, fromState, toState);
-                    log.debug("Action executed: {}", stateAction.getClass().getSimpleName());
+        for (StateAction<T> stateAction : sortedActions) {
+            try {
+                log.debug("Action executing: {}", stateAction.getClass().getSimpleName());
+                response = stateAction.execute(oldValue, newValue, fromState, toState);
+                log.debug("Action executed: {}", stateAction.getClass().getSimpleName());
 
-                } catch (ActionFailedException e) {
-                    log.debug("State transition Action: {} failed from: {} to {}. Error: {}", stateAction, fromState,
-                              toState, e.getMessage());
-                    //if the action is blocking, throw exception, else continue executing next action
-                    if (stateAction.isBlocking()) {
-                        throw e;
-                    }
+            } catch (ActionFailedException e) {
+                log.debug("State transition Action: {} failed from: {} to {}. Error: {}", stateAction, fromState, toState, e.getMessage());
+                //if the action is blocking, throw exception, else continue executing next action
+                if (stateAction.isBlocking()) {
+                    throw e;
                 }
             }
         }
